@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bank Customer Credit Score Prediction Form</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style>
+		.navbar {
+			background-color: #3498db; /* change to a lighter color */
+			height: 80px; /* adjust height as needed */
+		
+		}
+		.sidebar {
+			position: fixed;
+			top: 70px;
+			left: 0;
+			bottom: 0;
+			width: 200px;
+			background-color: #e5e5e5;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		
+		.image-top {
+			display: block;
+			width: 100%;
+			height: auto;
+			margin-bottom: 10px;
+			margin-top: 10px;
+		}
+		
+		.sidebar-header {
+			margin-top: 20px;
+			text-align: center;
+		}
+		.sidebar-content li {
+			margin-bottom: 10px; /* adjust this value to your desired amount of padding */
+			margin-left: -40px;
+		}
+
+
+		img {
+			max-width: 200%;
+			height: auto;
+		}
+		
+		.home-icon img {
+			height: 70px;
+			width: auto;
+		}
+		
+	</style>
+
+</head>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+	<div class="container-fluid d-flex justify-content-between">
+	<a href=""></a>
+	  <div class="d-flex ">
+		<h1 class="navbar-brand  " style="margin-left: 95px; font-size:xx-large ;">Bank Customer Credit Score Prediction</h1>
+	  </div>
+	  <div class="d-flex" >
+		<a href="#" class="home-icon ml-auto"><img src="https://i0.wp.com/www.fenyx.academy/wp-content/uploads/2023/02/logo-white.png?w=1280&ssl=1" alt="Home icon" width="30" height="30"></a>
+	  </div>
+	</div>
+  </nav>
+   
+
+	<!-- Left bar -->
+	<div class="sidebar">
+		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRos7HNhxzHQS7h_jrxkvJ4Q0OsgzfBnPLPcA&usqp=CAU" alt="example image" alt="Your Image" class="image-top">
+
+		<div class="sidebar-header">
+		  <h3>Customer Categories</h3>
+		  <hr>
+		</div>
+		<div class="sidebar-content">
+		  <ul>
+			<li><button type="button" class="btn btn-primary">Random 10 Customer</button></li>
+			<li><button type="button" class="btn btn-success">Good Customer</button></li>
+			<li><button type="button" class="btn btn-warning">Standard Customer</button></li>
+			<li><button type="button" class="btn btn-danger">Bad Customer</button></li>
+		  </ul>
+		</div>
+	  </div>
+
+
+</body>
+</html>

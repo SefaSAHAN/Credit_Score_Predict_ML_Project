@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bank Customer Credit Score Prediction Form</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style>
+		.navbar {
+			background-color: #3498db; 
+			height: 70px; 
+		
+		}
+		.sidebar {
+			position: fixed;
+			top: 70px;
+			left: 0;
+			bottom: 0;
+			width: 200px;
+			background-color: #EDEDED;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		
+		.image-top {
+			display: block;
+			width: 200px;
+			height: auto;
+			margin-bottom: 10px;
+			margin-top: 10px;
+		}
+		
+		.sidebar-header {
+			margin-top: 20px;
+			text-align: center;
+		}
+		.sidebar-content li {
+			margin-bottom: 10px; /* adjust this value to your desired amount of padding */
+			margin-left: -40px;
+		}
+
+		
+
+		/* Style for the main content */
+		.main-content {
+			max-width: 800px;
+			margin: 10px auto 5px auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.5);
+		}
+		
+		/* Style for the form */
+		form {
+			display: flex;
+			flex-wrap: wrap;
+		}
+		
+		.form-row {
+			display: flex;
+			align-items: center;
+			margin-bottom: 20px;
+			width: 100%;
+		}
+		
+		.form-row label {
+			flex: 1;
+			font-size: 18px;
+			margin-right: 20px;
+		}
+		
+		.form-row select,
+		.form-row input[type="number"] {
+			flex: 2;
+			font-size: 16px;
+			padding: 10px;
+			border: 2px solid #ddd;
+			border-radius: 5px;
+			outline: none;
+		}
+		
+		.form-row select {
+			appearance: none;
+			-webkit-appearance: none;
+			background-repeat: no-repeat;
+			background-position: right center;
+			background-size: 16px 16px;
+			padding-right: 25px;
+		}
+		
+		/* Additional styles */
+		h1 {
+			text-align: center;
+			font-size: 36px;
+			font-weight: bold;
+			
+		}
+		
+		h2 {
+			font-size: 24px;
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+		
+		img {
+			max-width: 200%;
+			height: auto;
+		}
+		
+		.home-icon img {
+			height: 70px;
+			width: auto;
+		}
+		
+		@media screen and (max-width: 768px) {
+			.main-content {
+				max-width: 100%;
+				padding: 10px;
+			}
+			
+			form {
+				flex-direction: column;
+			}
+			
+			.form-row label {
+				margin-bottom: 10px;
+			}
+			
+			.form-row select,
+			.form-row input[type="number"] {
+				width: 100%;
+				margin-bottom: 10px;
+			}
+		}
+		
+		/* CSS code for adding triangle shape to background */
+		body {
+			padding-top: 70px;
+			overflow-x: hidden;
+			font-family: 'Roboto', sans-serif;
+			background: linear-gradient(to bottom right,#ffffff, #0088cc );
+		}
+	</style>
+
+</head>
+<nav class=" navbar-expand-md navbar-dark fixed-top bg-dark navbar">
+	<div class="container-fluid d-flex justify-content-between">
+	<a href=""></a>
+	  <div class="d-flex ">
+		<h1 class="navbar-brand  " style="margin-left: 95px; font-size:x-large ;">Bank Customer Credit Score Prediction</h1>
+	  </div>
+	  <div class="d-flex" >
+		<a href="#" class="home-icon ml-auto"><img src="https://i0.wp.com/www.fenyx.academy/wp-content/uploads/2023/02/logo-white.png?w=1280&ssl=1" alt="Home icon" width="30" height="30"></a>
+	  </div>
+	</div>
+  </nav>
+   
+
+	<!-- Left bar -->
+	<div class="sidebar">
+		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRos7HNhxzHQS7h_jrxkvJ4Q0OsgzfBnPLPcA&usqp=CAU" alt="example image" alt="Your Image" class="image-top">
+
+		<div class="sidebar-header">
+			<hr>
+		  <h4>Customer Categories</h4>
+		  <hr>
+		</div>
+		<div class="sidebar-content">
+		  <ul>				
+			<li><form method="post" action="/good">
+				<button type="submit" class="btn btn-success">Good Customer</button>
+			</form></li>
+			<li><form method="post" action="/standart" >
+				<button type="submit" class="btn btn-warning">Standard Customer</button>
+			</form></li>
+			<li><form method="post" action="/bad">
+				<button type="submit" class="btn btn-danger">Bad Customer</button>
+			</form></li>
+		  </ul>
+		</div>
+	  </div>
+	  
+	  
+
+	<!-- Main content -->
+	<div class="main-content">
+
+		{% if good %}
+			
+				<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Out. Dept</th>
+						<th>Int. Rate</th>
+						<th>Cred. His</th>
+						<th>Cred.  Mix.</th>
+						<th>Delay Date</th>
+						<th>Chan Cred Limt</th>
+						<th>Mont Sal</th>
+						<th>Amo Inv</th>
+						<th>Mont Bala</th>
+						<th>Pred. Scor.</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for index, row in df.iterrows() %}
+					<tr>
+					<td>{{ row.Outstanding_Debt }}</td>
+					<td>{{ row.Interest_Rate }}</td>
+					<td>{{ row.Credit_History_Age }}</td>
+					<td>{{ row.Credit_Mix }}</td>
+					<td>{{ row.Delay_from_due_date }}</td>
+					<td>{{ row.Changed_Credit_Limit }}</td>
+					<td>{{ row.Monthly_Inhand_Salary }}</td>
+					<td>{{ row.Amount_invested_monthly }}</td>
+					<td>{{ row.Monthly_Balance }}</td>
+					<td>{{ row.Predictions }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			
+		
+		{% endif %}
+  
+		
+		<form action="/" method="POST">
+			<div class="form-row">
+				<label for="Outstanding_Debt">Outstanding Debt(between 0-4000):</label>
+				<input type="number" name="Outstanding_Debt"  step="1" required min="0" max="4000" title="Please enter a value between 0 and 400">
+			</div>
+
+			<div class="form-row">
+				<label for="Interest_Rate">Interest Rate:</label>
+				<input type="range" name="Interest_Rate" id="Interest_Rate" min="0" max="34" step="1">
+				<span id="Interest_Rate_value"></span>
+			</div>
+
+			<div class="form-row">
+				<label for="Credit_History_Age">Credit History Age(between 1-400):</label>
+				<input type="number" name="Credit_History_Age"  step="1" required min="1" max="400" title="Please enter a value between 1 and 400">
+			</div>
+
+			<div class="form-row">
+				<label for="Credit_Mix">Credit Mix:</label>
+				<div class="select-wrapper">
+				<select name="Credit_Mix" required>
+					<option value="" selected disabled hidden>Select Credit Mix</option>
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+
+				</select>
+				</div>
+			</div>
+
+			<div class="form-row">
+				<label for="Delay_from_due_date">Delay from Due Date:</label>
+				<input type="range" name="Delay_from_due_date" id="Delay_from_due_date" min="0" max="54" step="1">
+				<span id="Delay_from_due_date_value"></span>
+			</div>
+
+			<div class="form-row">
+				<label for="Changed_Credit_Limit">Changed Credit Limit:</label>
+				<input type="range" name="Changed_Credit_Limit" id="Changed_Credit_Limit" min="0" max="23" step="1">
+				<span id="Changed_Credit_Limit_value"></span>
+			</div>
+
+			<div class="form-row">
+				<label for="Monthly_Inhand_Salary">Monthly Salary(between 300-15000):</label>
+				<input type="number" name="Monthly_Inhand_Salary"  step="1" required min="300" max="15000" title="Please enter a value between 0 and 400">
+			</div>
+
+			<div class="form-row">
+				<label for="Amount_invested_monthly">Amount invested monthly(between 0-1000):</label>
+				<input type="number" name="Amount_invested_monthly"  step="1" required min="0" max="1000" title="Please enter a value between 0 and 1000">
+			</div>
+
+			<div class="form-row">
+				<label for="Credit_Utilization_Ratio">Credit Utilization Ratio(between 0-40):</label>
+				<input type="range" name="Credit_Utilization_Ratio" id="Credit_Utilization_Ratio" min="0" max="40" step="1">
+				<span id="Credit_Utilization_Ratio_value"></span>
+			</div>
+
+			<div class="form-row">
+				<label for="Monthly_Balance">Monthly Balance (between 0-864):</label>
+				<input type="number" name="Monthly_Balance"  step="1" required min="0" max="864" title="Please enter a value between 0 and 864">
+			</div>
+
+			<div class="form-row">
+				<label for="Num_Credit_Card">Number of Credit Cards:</label>
+				<div class="select-wrapper">
+				<select name="Num_Credit_Card" required>
+					<option value="" selected disabled hidden>Select Number of Credit Cards</option>
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+				</select>
+				</div>
+			</div>
+
+			<div class="form-row">
+				<label for="Total_EMI_per_month">Total EMI per month (between 0-430):</label>
+				<input type="number" name="Total_EMI_per_month"  step="1" required min="0" max="430" title="Please enter a value between 0 and 430">
+			</div>
+
+			<div class="form-row">
+				<label for="Age">Age (between 14-56):</label>
+            	<input type="number" name="Age"  step="1" required min="14" max="56" title="Please enter a value between 14 and 56">
+			</div>
+
+			<div class="form-row">
+				<label for="Num_of_Delayed_Payment">Number of Delayed Payment:</label>
+				<input type="range" name="Num_of_Delayed_Payment" id="Num_of_Delayed_Payment" min="0" max="23" step="1">
+				<span id="Num_of_Delayed_Payment_value"></span>
+			</div>
+			
+			<div class="form-row">
+            	<label for="Num_Credit_Inquiries">Number of Credit Inquiries:</label>
+            	<div class="select-wrapper">
+					<select name="Num_Credit_Inquiries" required>
+						<option value="" selected disabled hidden>Select Number of Credit Inquiries</option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+						<option value="13">13</option>
+						
+					</select>
+					</div>
+            </div>
+
+			<div class="form-row">
+				<label for="Num_Bank_Accounts">Number of Bank Accounts:</label>
+				<div class="select-wrapper">
+				<select name="Num_Bank_Accounts" required>
+					<option value="" selected disabled hidden>Select Number of Bank Accounts</option>
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+				</select>
+				</div>
+			</div>
+
+			<div class="form-row">
+				<label for="Occupation">Occupation:</label>
+				<div class="select-wrapper">
+					<select name="Occupation" required>
+						<option value="" selected disabled hidden>Select Occupation</option>
+						<option value="1">Writer</option>
+						<option value="2">Mechanic</option>
+						<option value="3">Scientist</option>
+						<option value="4">Entrepreneur</option>
+						<option value="5">Accountant</option>
+						<option value="6">Engineer</option>
+						<option value="7">Teacher</option>
+						<option value="8">Unkown</option>
+						<option value="9">Developer</option>
+						<option value="10">Manager</option>
+						<option value="11">Lawyer</option>
+						<option value="12">Doctor</option>
+						<option value="13">Musician</option>
+						<option value="14">Architect</option>
+						<option value="15">Journalist</option>
+						<option value="16">Media Manager</option>
+					
+					</select>
+				</div>
+			</div>
+
+			<div class="form-row">
+				<label for="Num_of_Loan">Number of Loan:</label>
+				<input type="range" name="Num_of_Loan" id="Num_of_Loan" min="0" max="9" step="1">
+				<span id="Num_of_Loan_value"></span>
+			</div>
+
+			<div class="form-row">
+				<label for="Payment_of_Min_Amount">Payment of Min Amount:</label>
+				<input type="range" name="Payment_of_Min_Amount" id="Payment_of_Min_Amount" min="0" max="2" step="1">
+				<span id="Payment_of_Min_Amount_value"></span>
+			</div>
+
+			<div class="form-row">
+				<label for="Payment_Behaviour">Payment Behaviour:</label>
+				<input type="range" name="Payment_Behaviour" id="Payment_Behaviour" min="0" max="7" step="1">
+				<span id="Payment_Behaviour_value"></span>
+			</div>
+
+			<div >
+				<button type="submit" class="btn btn-primary">Submit</button>
+				{% if credit_score %}
+					<p>Your Credit Score is {{credit_score}}</p>
+				{% endif %}
+			</div>
+		
+		</form>
+	</div>
+	<script>
+		function setupRangeSlider(id, valueId) {
+		const slider = document.getElementById(id);
+		const value = document.getElementById(valueId);
+
+		value.innerHTML = slider.value;
+
+		slider.addEventListener("input", function() {
+			value.innerHTML = this.value;
+		});
+		}
+
+		setupRangeSlider("Interest_Rate", "Interest_Rate_value");
+		setupRangeSlider("Delay_from_due_date", "Delay_from_due_date_value");
+		setupRangeSlider("Changed_Credit_Limit", "Changed_Credit_Limit_value");
+		setupRangeSlider("Credit_Utilization_Ratio", "Credit_Utilization_Ratio_value");
+		setupRangeSlider("Num_of_Delayed_Payment", "Num_of_Delayed_Payment_value");
+		setupRangeSlider("Num_of_Loan", "Num_of_Loan_value");
+		setupRangeSlider("Payment_Behaviour", "Payment_Behaviour_value");
+		setupRangeSlider("Payment_of_Min_Amount", "Payment_of_Min_Amount_value");
+
+	  </script>
+</body>
+</html>
