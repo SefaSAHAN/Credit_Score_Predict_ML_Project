@@ -57,4 +57,10 @@ $ tail -f ../data/logs.out
 
 ```
 
+### Shot down the docker
+
+```bash
+$ docker stop your_Container_id
+
+```
 
