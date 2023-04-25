@@ -4,7 +4,7 @@ from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
-from ml_model import CreditScoreClassifier
+from utils.ml_model import CreditScoreClassifier
 
 
 csc = CreditScoreClassifier('clean_data.csv')
