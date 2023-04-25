@@ -1,4 +1,4 @@
-#Bank Customer Credit Score Prediction APP
+# Bank Customer Credit Score Prediction APP
 
 
 ## Instructions and Setup Guide
@@ -17,7 +17,7 @@ $ docker build  -t my-app .
 $ docker run -p 8000:8000 my-app
 ```
 
-###Testing the application
+### Testing the application
 
 1. Go to your web browser and visit http://0.0.0.0:8000 or the URL of the server where the Docker container is running.
 
@@ -27,7 +27,7 @@ $ docker run -p 8000:8000 my-app
 
 4. You will see the predicted credit score for the bank customer on the screen.
 
-###Local testing & examining logs
+### Local testing & examining logs
 
 1. Find out the container id of the running container:
 
