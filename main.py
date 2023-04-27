@@ -168,6 +168,6 @@ async def button1(request: Request):
     return templates.TemplateResponse("home.html", {"request": request, "df": standart_customer,'good':'good'})
 
 
-# Start the server
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+# # Start the server
+# if __name__ == "__main__":
+#     uvicorn.run(app, host="0.0.0.0", port=8000)
